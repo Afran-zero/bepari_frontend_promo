@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Bepari</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/cow-farming-platform/assets/css/main.css">
+   <style>
+        :root {
+            --sage-100: #e9f0e5;
+            --sage-300: #aec8a4;
+            --sage-500: #5f8a55;
+            --sage-700: #3b5734;
+            --sage-900: #293b25;
+        }
+
+        body {
+    padding-top: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--sage-100);
+    display: flex;
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;      /* Centers content vertically */
+    min-height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(233, 240, 229, 0.9);
+}
+
+/* Center the auth container */
+.auth-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;  /* Ensures content inside is centered */
+    width: 100%;
+    max-width: 900px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(59, 87, 52, 0.2);
+    transition: all 0.3s ease;
+    background-color: white;
+    padding: 3rem;
+}
+
+/* Optional: Add spacing between left and right sections */
+.auth-left, .auth-right {
+    flex: 1; /* Makes both sections take up equal space */
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Auth right with texture */
+.auth-right {
+    background-color: var(--sage-500);
+    color: white;
+    background-image: url('https://www.transparenttextures.com/patterns/connected.png');
+}
+        .auth-tabs {
+            justify-content: center;
+            border-bottom: none;
+            margin-bottom: 2rem;
+        }
+
+        .auth-tabs .nav-link {
+            color: var(--sage-700);
+            border: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            margin-right: 0.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-tabs .nav-link.active {
+            background-color: var(--sage-500);
+            color: white;
+        }
+
+        .auth-tabs .nav-link:not(.active):hover {
+            background-color: var(--sage-100);
+        }
+
+        .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--sage-300);
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--sage-500);
+            box-shadow: 0 0 0 0.25rem rgba(95, 138, 85, 0.25);
+        }
+
+        .btn-auth {
+            background-color: var(--sage-700);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-auth:hover {
+            background-color: var(--sage-900);
+            transform: translateY(-2px);
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-google {
+            background-color: #DB4437;
+        }
+
+        .btn-facebook {
+            background-color: #4267B2;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--sage-700);
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--sage-300);
+        }
+
+        .divider::before {
+            margin-right: 1rem;
+        }
+
+        .divider::after {
+            margin-left: 1rem;
+        }
+
+        .auth-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .auth-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.75rem;
+        }
+
+        .auth-features li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--sage-300);
+        }
+
+        .admin-btn {padding-top:100px;
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            background-color: var(--sage-900);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .admin-btn:hover {
+            background-color: #1a2e16;
+            transform: translateY(-2px);
+        }
+
+        .floating-label {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .floating-label label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background-color: white;
+            padding: 0 5px;
+            font-size: 0.8rem;
+            color: var(--sage-700);
+        }
+
+        @media (max-width: 768px) {
+            .auth-right {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/cow-farming-platform/pages/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/projects/listing.html">Invest</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/farmer/request.html">For Farmers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/legal/terms.html">Legal</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                         
+                         <li><a class="dropdown-item" href="pages/legal/privacy.html">Privacy</a></li>
+                            <li><a class="dropdown-item" href="/cow-farming-platform/pages/legal/Team.html">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary btn-glow" href="/cow-farming-platform/pages/legal/Team.html">Login / Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+<div class="auth-container " >
+        <div class="row g-1">
+            <!-- Left Side (Form) -->
+            <div class="col-lg-6 auth-left">
+                <ul class="nav auth-tabs" id="authTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">
+                            Login
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab">
+                            Sign Up
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="authTabsContent">
+                    <!-- Login Tab -->
+                    <div class="tab-pane fade show active" id="login" role="tabpanel">
+                        <form>
+                            <div class="floating-label">
+                                <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+                                <label for="loginEmail">Email</label>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                                <label for="loginPassword">Password</label>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <a href="#" class="text-decoration-none" style="color: var(--sage-700);">Forgot password?</a>
+                            </div>
+                            
+                            <button type="submit" class="btn-auth mb-3">Login</button>
+                            
+                            <div class="divider">OR</div>
+                            
+                            <div class="social-login">
+                                <a href="#" class="social-btn btn-google">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                                <a href="#" class="social-btn btn-facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Signup Tab -->
+                    <div class="tab-pane fade" id="signup" role="tabpanel">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="floating-label">
+                                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                                        <label for="firstName">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="floating-label">
+                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                                        <label for="lastName">Last Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <input type="email" class="form-control" id="signupEmail" placeholder="Email" required>
+                                <label for="signupEmail">Email</label>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+                                <label for="signupPassword">Password</label>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                                <label for="confirmPassword">Confirm Password</label>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="termsAgree" required>
+                                <label class="form-check-label" for="termsAgree">
+                                    I agree to the <a href="#" style="color: var(--sage-700);">Terms & Conditions</a>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn-auth">Create Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+            <!-- Right Side (Info) -->
+            <div class="col-lg-6 auth-right">
+                <h2 class="mb-4">Welcome to Bepari</h2>
+                <p class="mb-4">Join our community of farmers and investors to grow sustainable agriculture together.</p>
+                
+                <ul class="auth-features">
+                    <li>Invest in verified farming projects</li>
+                    <li>Get funding for your agricultural business</li>
+                    <li>Transparent tracking of your investments</li>
+                    <li>Secure and escrow-protected transactions</li>
+                </ul>
+            </div>
+            <button class="admin-btn">
+                <i class="fas fa-lock me-1"></i> Admin Login
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple animation for form switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('[data-bs-toggle="tab"]');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Add a slight fade transition when switching tabs
+                    const activePane = document.querySelector('.tab-pane.active');
+                    activePane.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        activePane.classList.remove('show', 'active');
+                        const targetPane = document.querySelector(this.getAttribute('data-bs-target'));
+                        targetPane.classList.add('show', 'active');
+                        targetPane.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            targetPane.style.opacity = '1';
+                        }, 50);
+                    }, 300);
+                });
+            });
+
+            // Admin button functionality
+            const adminBtn = document.querySelector('.admin-btn');
+            adminBtn.addEventListener('click', function() {
+                window.location.href = '/admin-login';
+            });
+        });
+    </script>
+</body>
+</html>

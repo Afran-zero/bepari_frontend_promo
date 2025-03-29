@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Funded | Bepari</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/cow-farming-platform/assets/css/main.css">
+    <style>
+        /* Simple Professional Styles */
+        body {padding-top:80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .hero-section {
+            background-color: #28a745;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-tracker {
+            background-color: rgb(78, 5, 5);
+            border-radius: 50px;
+            padding: 0.75rem;
+            margin-top: 1.5rem;
+            max-width: 400px;
+        }
+        
+        .step {
+            display: inline-block;
+            width: 30%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step.active {
+            font-weight: bold;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #052c0e;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 0.5rem;
+        }
+        
+        .step.active .step-number {
+            background-color: #0056b3;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #28a745;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .map-container {
+            height: 200px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #6c757d;
+        }
+        
+        .slider-container {
+            padding: 1rem 0;
+        }
+        
+        .slider-tip {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        .pie-chart {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #28a745 0% 60%,
+                #17a2b8 60% 80%,
+                #6c757d 80% 100%
+            );
+            margin: 0 auto 1rem;
+        }
+        
+        .upload-area {
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: #28a745;
+        }
+        
+        .file-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .file-thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .file-thumbnail i {
+            font-size: 2rem;
+            color: #6c757d;
+        }
+        
+        .remove-file {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #dc3545;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+        
+        .required-docs {
+            margin-top: 2rem;
+        }
+        
+        .doc-item {
+            padding: 0.5rem;
+            border-left: 3px solid #28a745;
+            margin-bottom: 0.5rem;
+            background-color: #f8f9fa;
+        }
+        
+        .doc-item.missing {
+            border-left-color: #dc3545;
+            background-color: #fff3f3;
+        }
+        
+        .eligibility-meter {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .eligibility-fill {
+            height: 100%;
+            border-radius: 5px;
+            background-color: #28a745;
+            width: 85%;
+        }
+        
+        .tooltip-icon {
+            color: #6c757d;
+            cursor: help;
+            margin-left: 0.3rem;
+        }
+        
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+            padding: 0.75rem 2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+        }
+        
+        .success-state {
+            text-align: center;
+            padding: 3rem;
+            display: none;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body  style="background-color: #ebe1c5 !important;">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="/cow-farming-platform/pages/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/projects/listing.html">Invest</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/cow-farming-platform/pages/farmer/request.html">For Farmers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/legal/terms.html">Legal</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                         
+                         <li><a class="dropdown-item" href="pages/legal/privacy.html">Privacy</a></li>
+                            <li><a class="dropdown-item" href="/cow-farming-platform/pages/legal/Team.html">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary btn-glow" href="/cow-farming-platform/pages/auth/login.html">Login / Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="text-center">Get Funded for Your Farm – No Upfront Costs</h1>
+            <p class="text-center lead">Connect with 5,000+ investors ready to back your livestock project</p>
+            
+            <div class="progress-tracker mx-auto">
+                <div class="step active">
+                   
+                    <span>Project Details</span>
+                </div>
+                <div class="step">
+                   
+                    <span>Financials</span>
+                </div>
+                <div class="step">
+                  
+                    <span>Submit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mb-5">
+        <!-- Farm Basics Section -->
+        <div class="form-section">
+            <h2 class="section-title">1. Farm Basics</h2>
+            
+            <div class="mb-4">
+                <label class="form-label">Farm Location</label>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marker-alt me-2"></i> Click to set your farm location
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button class="btn btn-sm btn-outline-secondary">Adjust Pin Manually</button>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <label class="form-label">Farm Type</label>
+                <div class="btn-group w-100">
+                    <button class="btn btn-outline-primary active">Dairy</button>
+                    <button class="btn btn-outline-primary">Beef</button>
+                    <button class="btn btn-outline-primary">Breeding</button>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <label class="form-label">Existing Herd Size: <span id="herdValue">50</span> cattle</label>
+                <div class="slider-container">
+                    <input type="range" class="form-range" min="0" max="500" value="50" id="herdSlider">
+                </div>
+                <div class="slider-tip">Typical funded projects have 50-200 cattle</div>
+            </div>
+        </div>
+        
+        <!-- Financial Needs Section -->
+        <div class="form-section">
+            <h2 class="section-title">2. Financial Needs</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Total Funding Requested ($)</label>
+                    <input type="number" class="form-control" placeholder="e.g. 25000">
+                    <div class="mt-2 text-muted">Similar farms requested $20,000–$35,000</div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="pie-chart"></div>
+                    <div>
+                        <span class="badge bg-primary">60% Livestock</span>
+                        <span class="badge bg-info">20% Feed</span>
+                        <span class="badge bg-secondary">20% Infrastructure</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <label class="form-label">Breakdown Allocation</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">Livestock</span>
+                        <input type="number" class="form-control" value="60" readonly>
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">Feed</span>
+                        <input type="number" class="form-control" value="20" readonly>
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Infrastructure</span>
+                        <input type="number" class="form-control" value="20" readonly>
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Repayment Plan</label>
+                    <select class="form-select mb-3">
+                        <option>12 months (10% interest)</option>
+                        <option>18 months (12% interest)</option>
+                        <option>24 months (15% interest)</option>
+                    </select>
+                    <div class="form-text">We'll help customize this after review</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Document Upload Section -->
+        <div class="form-section">
+            <h2 class="section-title">3. Document Upload</h2>
+            
+            <div class="upload-area">
+                <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: #28a745;"></i>
+                <h5>Drag & Drop Files Here</h5>
+                <p class="text-muted">or click to browse your files</p>
+                <input type="file" id="fileUpload" multiple style="display: none;">
+            </div>
+            
+            <div class="file-preview">
+                <div class="file-thumbnail">
+                    <i class="fas fa-file-pdf"></i>
+                    <span class="remove-file">&times;</span>
+                </div>
+                <div class="file-thumbnail">
+                    <i class="fas fa-file-image"></i>
+                    <span class="remove-file">&times;</span>
+                </div>
+            </div>
+            
+            <div class="required-docs">
+                <h5>Required Documents</h5>
+                <div class="doc-item">
+                    <i class="fas fa-check-circle text-success me-2"></i> ID Verification (uploaded)
+                </div>
+                <div class="doc-item">
+                    <i class="fas fa-check-circle text-success me-2"></i> Land Title/Lease (uploaded)
+                </div>
+                <div class="doc-item missing">
+                    <i class="fas fa-exclamation-circle text-danger me-2"></i> Veterinary Compliance Cert (missing)
+                </div>
+                <div class="doc-item missing">
+                    <i class="fas fa-exclamation-circle text-danger me-2"></i> 6-Month Milk Production Log (missing)
+                </div>
+            </div>
+        </div>
+        
+        <!-- Risk Assessment -->
+        <div class="form-section">
+            <h2 class="section-title">Eligibility Assessment</h2>
+            
+            <div class="alert alert-success">
+                <strong>Your project qualifies for 85% funding</strong> based on:
+            </div>
+            
+            <div class="eligibility-meter">
+                <div class="eligibility-fill"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-check-circle text-success me-2"></i> Land size
+                    <i class="fas fa-question-circle tooltip-icon" title="Minimum 5 acres required"></i>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-check-circle text-success me-2"></i> Experience
+                    <i class="fas fa-question-circle tooltip-icon" title="2+ years in livestock farming"></i>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-exclamation-triangle text-warning me-2"></i> Herd health records
+                    <i class="fas fa-question-circle tooltip-icon" title="Pending veterinary certification"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Submission -->
+        <div class="text-center mt-4">
+            <button class="btn btn-submit me-3">Preview Application</button>
+            <button class="btn btn-outline-secondary">Save Draft</button>
+        </div>
+        
+        <!-- Success State (hidden initially) -->
+        <div class="form-section success-state">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Your project is now under review!</h2>
+            <p class="lead">We'll contact you within 24 hours to verify details</p>
+            
+            <div class="progress-tracker mx-auto mt-4">
+                <div class="step active">
+                    <span class="step-number"><i class="fas fa-check"></i></span>
+                    <span>Submitted</span>
+                </div>
+                <div class="step active">
+                    <span class="step-number">2</span>
+                    <span>Verification</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span>Site Inspection</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <span>Funding</span>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <strong>Next Step:</strong> Site inspection within 5 business days
+            </div>
+            
+            <button class="btn btn-outline-primary mt-3">View Your Application</button>
+        </div>
+    </div>
+     <!-- Footer -->
+     <footer class="footer pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40" class="mb-3">
+                    <p>Bepari connects investors with farmers to create sustainable agricultural growth and financial returns.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Invest</h5>
+                    <ul>
+                        <li><a href="pages/projects/listing.html">Browse Projects</a></li>
+                        <li><a href="pages/tutorial/index.html">How It Works</a></li>
+                        <li><a href="#">ROI Calculator</a></li>
+                        <li><a href="#">Investment Guide</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Farmers</h5>
+                    <ul>
+                        <li><a href="pages/farmer/request.html">Apply for Funding</a></li>
+                        <li><a href="#">Farmer Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="pages/legal/terms.html">Terms</a></li>
+                        <li><a href="pages/legal/privacy.html">Privacy</a></li>
+                        <li><a href="#">Risk Disclosure</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Bepari. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> in Bangladesh</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Herd size slider
+            const herdSlider = document.getElementById('herdSlider');
+            const herdValue = document.getElementById('herdValue');
+            
+            herdSlider.addEventListener('input', function() {
+                herdValue.textContent = this.value;
+            });
+            
+            // File upload interaction
+            const uploadArea = document.querySelector('.upload-area');
+            const fileInput = document.getElementById('fileUpload');
+            
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function() {
+                // In a real app, you would handle file previews here
+                alert(`${this.files.length} files selected`);
+            });
+            
+            // Tooltips
+            const tooltipIcons = document.querySelectorAll('.tooltip-icon');
+            tooltipIcons.forEach(icon => {
+                icon.addEventListener('mouseover', function() {
+                    // Bootstrap would handle this with its tooltip plugin
+                    // This is just for the demo
+                    const title = this.getAttribute('title');
+                    alert(title);
+                });
+            });
+            
+            // Form submission (demo)
+            const submitBtn = document.querySelector('.btn-submit');
+            const successState = document.querySelector('.success-state');
+            
+            submitBtn.addEventListener('click', function() {
+                // In a real app, you would validate and submit the form
+                document.querySelectorAll('.form-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                submitBtn.style.display = 'none';
+                successState.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

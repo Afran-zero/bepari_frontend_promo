@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bepari | Microfinance Cow Farming Platform</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Combined properly -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS - Fixed paths -->
+    <link rel="stylesheet" href="/cow-farming-platform/assets/css/main.css">
+    <!-- Only include if you actually have animations.css -->
+    <link rel="stylesheet" href="/cow-farming-platform/assets/css/animations.css"> 
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logos/favicon.ico">
+</head>
+<body>
+ 
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/projects/listing.html">Invest</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/farmer/request.html">For Farmers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/legal/terms.html">Legal</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                         
+                         <li><a class="dropdown-item" href="pages/legal/privacy.html">Privacy</a></li>
+                            <li><a class="dropdown-item" href="/cow-farming-platform/pages/legal/Team.html">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary btn-glow" href="/cow-farming-platform/pages/legal/Team.html">Login / Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel with Overlay Text -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/cow-farming-platform/assets/images/banners/farm-1.jpg" class="d-block w-100" alt="Sustainable Farming">
+                <div class="carousel-caption">
+                    <h1 class="animate__animated animate__fadeInDown">Invest in Sustainable Agriculture & Empowering Farmers</h1>
+                    <p class="animate__animated animate__fadeInUp">Join our platform to support local farmers and earn competitive returns</p>
+                    <a href="/cow-farming-platform/pages/projects/listing.html" class="btn btn-primary btn-lg animate__animated animate__fadeInUp">Browse Projects</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/banners/cows-1.jpg" class="d-block w-100" alt="Happy Cows">
+                <div class="carousel-caption">
+                    <h1 class="animate__animated animate__fadeInDown">Transparent Cow Farming Investments</h1>
+                    <p class="animate__animated animate__fadeInUp">Track your investments with real-time updates and farm metrics</p>
+                    <a href="/cow-farming-platform/pages/projects/listing.html" class="btn btn-primary btn-lg animate__animated animate__fadeInUp">Join Now !</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/banners/farmer-1.jpg" class="d-block w-100" alt="Farmer Success">
+                <div class="carousel-caption">
+                    <h1 class="animate__animated animate__fadeInDown">Start invest with just 1000BDT.</h1>
+                    <p class="animate__animated animate__fadeInUp">Get secure,long term and flexible profits according to Islamic law</p>
+                    <a href="/cow-farming-platform/pages/farmer/request.html" class="btn btn-primary btn-lg animate__animated animate__fadeInUp">Apply as Farmer</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Stats Counter -->
+    <section class="stats-counter py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <i class="fas fa-cow"></i>
+                        <h3 class="counter" data-target="250">0</h3>
+                        <p>Cows Funded</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <i class="fas fa-users"></i>
+                        <h3 class="counter" data-target="120">0</h3>
+                        <p>Active Investors</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <i class="fas fa-tractor"></i>
+                        <h3 class="counter" data-target="45">0</h3>
+                        <p>Farmers Supported</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <i class="fas fa-percentage"></i>
+                        <h3 class="counter" data-target="18.5">0</h3>
+                        <p>Average ROI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects py-5">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Investment Opportunities</h2>
+                <p>Browse our currently active projects with the best potential returns</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Project Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-badge">Hot Deal</div>
+                        <div class="project-image">
+                            <img src="assets/images/projects/project-1.jpg" alt="Dairy Farm Expansion">
+                            <div class="project-overlay">
+                                <a href="pages/projects/detail.html" class="btn btn-outline-light">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Dairy Farm Expansion</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Bosila, Dhaka</p>
+                            <div class="project-meta">
+                                <div>
+                                    <span>Share Price</span>
+                                    <strong>1,000 BDT</strong>
+                                </div>
+                                <div>
+                                    <span>ROI</span>
+                                    <strong>22%</strong>
+                                </div>
+                                <div>
+                                    <span>Duration</span>
+                                    <strong>12 Months</strong>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% Funded</div>
+                            </div>
+                            <div class="project-footer">
+                                <a href="pages/payment/checkout.html" class="btn btn-primary">Invest Now</a>
+                                <div class="social-proof">
+                                    <div class="avatars">
+                                        <img src="assets/images/testimonials/user1.jpg" alt="Investor 1">
+                                        <img src="assets/images/testimonials/user2.jpg" alt="Investor 2">
+                                        <img src="assets/images/testimonials/user3.jpg" alt="Investor 3">
+                                    </div>
+                                    <span>25+ investors</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/images/projects/project-2.jpg" alt="Organic Cattle Ranch">
+                            <div class="project-overlay">
+                                <a href="pages/projects/detail.html" class="btn btn-outline-light">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Organic Cattle Ranch</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Savar, Dhaka</p>
+                            <div class="project-meta">
+                                <div>
+                                    <span>Share Price</span>
+                                    <strong>1,500 BDT</strong>
+                                </div>
+                                <div>
+                                    <span>ROI</span>
+                                    <strong>19%</strong>
+                                </div>
+                                <div>
+                                    <span>Duration</span>
+                                    <strong>18 Months</strong>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45% Funded</div>
+                            </div>
+                            <div class="project-footer">
+                                <a href="pages/payment/checkout.html" class="btn btn-primary">Invest Now</a>
+                                <div class="social-proof">
+                                    <div class="avatars">
+                                        <img src="assets/images/testimonials/user4.jpg" alt="Investor 4">
+                                        <img src="assets/images/testimonials/user5.jpg" alt="Investor 5">
+                                    </div>
+                                    <span>12+ investors</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-badge">New</div>
+                        <div class="project-image">
+                            <img src="assets/images/projects/project-3.jpg" alt="High-Yield Dairy">
+                            <div class="project-overlay">
+                                <a href="pages/projects/detail.html" class="btn btn-outline-light">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>High-Yield Dairy</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Mohammadpur, Dhaka</p>
+                            <div class="project-meta">
+                                <div>
+                                    <span>Share Price</span>
+                                    <strong>1,200 BDT</strong>
+                                </div>
+                                <div>
+                                    <span>ROI</span>
+                                    <strong>25%</strong>
+                                </div>
+                                <div>
+                                    <span>Duration</span>
+                                    <strong>10 Months</strong>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30% Funded</div>
+                            </div>
+                            <div class="project-footer">
+                                <a href="pages/payment/checkout.html" class="btn btn-primary">Invest Now</a>
+                                <div class="social-proof">
+                                    <div class="avatars">
+                                        <img src="assets/images/testimonials/user6.jpg" alt="Investor 6">
+                                    </div>
+                                    <span>8+ investors</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="/cow-farming-platform/pages/projects/listing.html" class="btn btn-outline-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>How Bepari Works</h2>
+                <p class="lead">Invest in agriculture in just a few simple steps</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>Create Account</h3>
+                        <p>Sign up as an investor in minutes with our simple onboarding process</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3>Browse Projects</h3>
+                        <p>Explore vetted farming opportunities with transparent details</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3>Invest Securely</h3>
+                        <p>Choose your investment amount and complete payment</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Track & Earn</h3>
+                        <p>Monitor your investment growth and receive regular payouts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farmer CTA -->
+    <section class="farmer-cta py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="cta-content">
+                        <h2>Are You a Farmer?</h2>
+                        <p class="lead">Get the funding you need to grow your livestock business with competitive terms and support from our agricultural experts.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Quick approval process</li>
+                            <li><i class="fas fa-check-circle"></i> Flexible repayment options</li>
+                            <li><i class="fas fa-check-circle"></i> Technical support included</li>
+                            <li><i class="fas fa-check-circle"></i> Market access for your products</li>
+                        </ul>
+                        <div class="cta-buttons">
+                            <a href="pages/farmer/request.html" class="btn btn-primary btn-lg">Apply Now</a>
+                            <a href="pages/tutorial/index.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cta-image">
+                        <img src="assets/images/farmer-cta.jpg" alt="Happy Farmer" class="img-fluid rounded-3 shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials py-5">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>What Our Community Says</h2>
+                <p>Hear from investors and farmers who are using Bepari</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"Investing through Bepari has given me better returns than my stock portfolio, with the added benefit of supporting local agriculture."</p>
+                        <div class="author">
+                            <img src="assets/images/testimonials/investor1.jpg" alt="Rahim Ahmed">
+                            <div>
+                                <h5>Rahim Ahmed</h5>
+                                <span>Investor since 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"The funding I received allowed me to expand my dairy operation from 5 to 15 cows. The repayment terms are fair and the support is excellent."</p>
+                        <div class="author">
+                            <img src="assets/images/testimonials/farmer1.jpg" alt="Fatima Begum">
+                            <div>
+                                <h5>Fatima Begum</h5>
+                                <span>Dairy Farmer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="quote">"As someone who wants to invest ethically, Bepari is perfect. I can see exactly where my money is going and the impact it's making."</p>
+                        <div class="author">
+                            <img src="assets/images/testimonials/investor2.jpg" alt="Tahmina Akter">
+                            <div>
+                                <h5>Tahmina Akter</h5>
+                                <span>Impact Investor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2>Stay Updated</h2>
+                    <p class="lead">Subscribe to our newsletter for new investment opportunities, farming tips, and platform updates</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address" required>
+                            <button class="btn btn-dark" type="submit">Subscribe</button>
+                        </div>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" id="consentCheck" required>
+                            <label class="form-check-label" for="consentCheck">
+                                I agree to receive emails from Bepari
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40" class="mb-3">
+                    <p>Bepari connects investors with farmers to create sustainable agricultural growth and financial returns.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Invest</h5>
+                    <ul>
+                        <li><a href="pages/projects/listing.html">Browse Projects</a></li>
+                        <li><a href="pages/tutorial/index.html">How It Works</a></li>
+                        <li><a href="#">ROI Calculator</a></li>
+                        <li><a href="#">Investment Guide</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Farmers</h5>
+                    <ul>
+                        <li><a href="pages/farmer/request.html">Apply for Funding</a></li>
+                        <li><a href="#">Farmer Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="pages/legal/terms.html">Terms</a></li>
+                        <li><a href="pages/legal/privacy.html">Privacy</a></li>
+                        <li><a href="#">Risk Disclosure</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Bepari. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> in Bangladesh</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="/cow-farming-platform/assets/js/main.js"></script>
+    <script src="/cow-farming-platform/assets/js/particles.js"></script>
+</body>
+</html>

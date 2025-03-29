@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Listings | Bepari</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/cow-farming-platform/assets/css/main.css">
+</head>
+<body >
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="/cow-farming-platform/pages/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/cow-farming-platform/pages/projects/listing.html">Invest</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/farmer/request.html">For Farmers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cow-farming-platform/pages/legal/terms.html">Legal</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                         
+                         <li><a class="dropdown-item" href="pages/legal/privacy.html">Privacy</a></li>
+                            <li><a class="dropdown-item" href="/cow-farming-platform/pages/legal/Team.html">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary btn-glow" href="/cow-farming-platform/pages/legal/Team.html">Login / Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Filter Bar -->
+    <section class="sticky-filter-bar">
+        <div class="container">
+            <div class="search-container">
+                <div class="input-group smart-search">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search projects, locations, farmers..." id="projectSearch">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+                
+                <div class="filter-pills">
+                    <div class="pill-group">
+                        <span class="pill-label">ROI:</span>
+                        <button class="btn btn-pill active">All</button>
+                        <button class="btn btn-pill">High (20%+)</button>
+                        <button class="btn btn-pill">Medium (10-20%)</button>
+                    </div>
+                    <div class="pill-group">
+                        <span class="pill-label">Stage:</span>
+                        <button class="btn btn-pill active">All</button>
+                        <button class="btn btn-pill">Funding</button>
+                        <button class="btn btn-pill">Active</button>
+                        <button class="btn btn-pill">Harvesting</button>
+                    </div>
+                    <div class="pill-group">
+                        <span class="pill-label">Certified:</span>
+                        <button class="btn btn-pill">Organic</button>
+                        <button class="btn btn-pill">Free-range</button>
+                        <button class="btn btn-pill">USDA</button>
+                    </div>
+                </div>
+                
+                <div class="sort-dropdown">
+                    <select class="form-select">
+                        <option>Sort by: Most Funded</option>
+                        <option>Highest ROI</option>
+                        <option>Ending Soon</option>
+                        <option>Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container listing-container">
+        <div class="row">
+            <!-- Advanced Filter Panel Trigger -->
+            <div class="col-12 mb-4">
+                <button class="btn btn-outline-primary" id="advancedFilterBtn">
+                    <i class="fas fa-sliders-h me-2"></i>Advanced Filters
+                </button>
+                <div class="trust-indicators float-end">
+                    <span class="investor-count"><i class="fas fa-users"></i> 5,247 investors</span>
+                    <span class="live-ticker"><i class="fas fa-bolt"></i> Last: $500 by User_42 (2min ago)</span>
+                </div>
+            </div>
+            
+            <!-- Project Grid -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <div class="card-badges">
+                        <span class="badge trending-badge">Trending <i class="fas fa-fire"></i></span>
+                        <span class="badge verified-badge">Verified <i class="fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x300?text=Dairy+Farm" alt="Organic Dairy Expansion">
+                        <div class="hover-actions">
+                            <button class="btn btn-action"><i class="far fa-heart"></i></button>
+                            <button class="btn btn-action"><i class="fas fa-balance-scale"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Organic Dairy Expansion</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Madison, WI</p>
+                        
+                        <div class="progress-dashboard">
+                            <div class="circular-progress" data-value="75">
+                                <svg class="progress-ring" width="60" height="60">
+                                    <circle class="progress-ring-circle" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+                                </svg>
+                                <span class="progress-value">75%</span>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-bar"></div>
+                                <div class="milestone">Next: Calf Delivery in 2mo</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <div>
+                                <span>ROI</span>
+                                <strong>22%</strong>
+                            </div>
+                            <div>
+                                <span>Min. Invest</span>
+                                <strong>$500</strong>
+                            </div>
+                            <div>
+                                <span>Duration</span>
+                                <strong>18mo</strong>
+                            </div>
+                        </div>
+                        
+                        <a class="btn btn-primary w-100 mt-2" href="/cow-farming-platform/pages/projects/detail.html">View Details</a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Repeat project cards (2 more examples in this snippet) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <div class="card-badges">
+                        <span class="badge ending-badge">Ending Soon <i class="fas fa-clock"></i></span>
+                    </div>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x300?text=Grass+Fed" alt="Grass-Fed Beef Ranch">
+                        <div class="hover-actions">
+                            <button class="btn btn-action"><i class="far fa-heart"></i></button>
+                            <button class="btn btn-action"><i class="fas fa-balance-scale"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Grass-Fed Beef Ranch</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Austin, TX</p>
+                        
+                        <div class="progress-dashboard">
+                            <div class="circular-progress" data-value="92">
+                                <svg class="progress-ring" width="60" height="60">
+                                    <circle class="progress-ring-circle" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+                                </svg>
+                                <span class="progress-value">92%</span>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-bar"></div>
+                                <div class="milestone">Harvest in 4mo</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <div>
+                                <span>ROI</span>
+                                <strong>18%</strong>
+                            </div>
+                            <div>
+                                <span>Min. Invest</span>
+                                <strong>$1,000</strong>
+                            </div>
+                            <div>
+                                <span>Duration</span>
+                                <strong>12mo</strong>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary w-100 mt-2">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <div class="card-badges">
+                        <span class="badge verified-badge">Verified <i class="fas fa-check-circle"></i></span>
+                        <span class="badge certified-badge">USDA Certified</span>
+                    </div>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x300?text=Goat+Farm" alt="Artisan Goat Dairy">
+                        <div class="hover-actions">
+                            <button class="btn btn-action"><i class="far fa-heart"></i></button>
+                            <button class="btn btn-action"><i class="fas fa-balance-scale"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Artisan Goat Dairy</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Portland, OR</p>
+                        
+                        <div class="progress-dashboard">
+                            <div class="circular-progress" data-value="45">
+                                <svg class="progress-ring" width="60" height="60">
+                                    <circle class="progress-ring-circle" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+                                </svg>
+                                <span class="progress-value">45%</span>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-bar"></div>
+                                <div class="milestone">Cheese Production in 6mo</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <div>
+                                <span>ROI</span>
+                                <strong>25%</strong>
+                            </div>
+                            <div>
+                                <span>Min. Invest</span>
+                                <strong>$750</strong>
+                            </div>
+                            <div>
+                                <span>Duration</span>
+                                <strong>24mo</strong>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary w-100 mt-2">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Empty State (hidden by default) -->
+        <div class="empty-state text-center py-5" style="display: none;">
+            <img src="/cow-farming-platform/assets/images/empty-state.svg" alt="No projects found" class="mb-4" style="max-width: 300px;">
+            <h3>No projects match your filters</h3>
+            <p class="text-muted mb-4">Try these suggestions:</p>
+            <div class="suggestions">
+                <button class="btn btn-outline-primary mx-2">Expand ROI range</button>
+                <button class="btn btn-outline-primary mx-2">View similar projects</button>
+                <button class="btn btn-outline-primary mx-2">Get notified</button>
+            </div>
+        </div>
+        
+        <!-- Pagination/Load More -->
+        <div class="load-more-container text-center py-4">
+            <button class="btn btn-outline-primary px-4">
+                <i class="fas fa-redo me-2"></i>Load Next 6 Projects
+            </button>
+            <div class="pagination-fallback mt-3">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Comparison FAB -->
+    <div class="comparison-fab">
+        <button class="btn btn-primary rounded-pill shadow">
+            <i class="fas fa-balance-scale-left me-2"></i>
+            Compare Projects <span class="badge bg-white text-primary ms-2">0/3</span>
+        </button>
+    </div>
+    
+    <!-- Advanced Filter Panel (Hidden) -->
+    <div class="advanced-filter-panel">
+        <div class="filter-header">
+            <h4>Advanced Filters</h4>
+            <button class="btn-close" id="closeFilterPanel"></button>
+        </div>
+        <div class="filter-body">
+            <div class="filter-section">
+                <h5>Financials</h5>
+                <div class="mb-3">
+                    <label class="form-label">ROI Range: <span id="roiValue">10% - 25%</span></label>
+                    <div class="range-slider">
+                        <input type="range" class="form-range" min="5" max="30" step="1" id="roiMin" value="10">
+                        <input type="range" class="form-range" min="5" max="30" step="1" id="roiMax" value="25">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Minimum Investment</label>
+                    <select class="form-select">
+                        <option>Any amount</option>
+                        <option>$100+</option>
+                        <option>$500+</option>
+                        <option>$1,000+</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Risk Tolerance</label>
+                    <div class="btn-group w-100">
+                        <button class="btn btn-outline-primary active">Low</button>
+                        <button class="btn btn-outline-primary">Medium</button>
+                        <button class="btn btn-outline-primary">High</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h5>Geographic</h5>
+                <div class="mb-3">
+                    <label class="form-label">Region</label>
+                    <div class="mini-map"></div>
+                    <div class="region-tags mt-2">
+                        <span class="badge bg-light text-dark me-1">Midwest</span>
+                        <span class="badge bg-light text-dark me-1">Northeast</span>
+                        <span class="badge bg-primary me-1">West</span>
+                    </div>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="nearHubs">
+                    <label class="form-check-label" for="nearHubs">Near major dairy hubs</label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h5>Sustainability</h5>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="carbonNeutral">
+                    <label class="form-check-label" for="carbonNeutral">Carbon Neutral</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="grassFed">
+                    <label class="form-check-label" for="grassFed">Grass-Fed Only</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="regenerative">
+                    <label class="form-check-label" for="regenerative">Regenerative Agriculture</label>
+                </div>
+            </div>
+        </div>
+        <div class="filter-footer">
+            <button class="btn btn-outline-secondary">Reset</button>
+            <button class="btn btn-primary">Apply Filters</button>
+        </div>
+    </div>
+    
+    <!-- Comparison Modal (Hidden) -->
+    <div class="comparison-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Compare Projects (2/3)</h5>
+                <button class="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="comparison-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Organic Dairy</th>
+                                <th>Goat Farm</th>
+                                <th>Add Project</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ROI %</td>
+                                <td>22%</td>
+                                <td>25%</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Risk Level</td>
+                                <td>Medium</td>
+                                <td>High</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Yield Potential</td>
+                                <td>High</td>
+                                <td>Medium</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Farmer Score</td>
+                                <td>4.8 ★</td>
+                                <td>4.5 ★</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Eco Impact</td>
+                                <td><i class="fas fa-leaf text-success"></i> 85%</td>
+                                <td><i class="fas fa-leaf text-success"></i> 92%</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary">Clear All</button>
+                <button class="btn btn-primary">Continue to Invest</button>
+            </div>
+        </div>
+    </div>
+ <!-- Footer -->
+ <footer class="footer pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40" class="mb-3">
+                <p>Bepari connects investors with farmers to create sustainable agricultural growth and financial returns.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4">
+                <h5>Invest</h5>
+                <ul>
+                    <li><a href="pages/projects/listing.html">Browse Projects</a></li>
+                    <li><a href="pages/tutorial/index.html">How It Works</a></li>
+                    <li><a href="#">ROI Calculator</a></li>
+                    <li><a href="#">Investment Guide</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4">
+                <h5>Farmers</h5>
+                <ul>
+                    <li><a href="pages/farmer/request.html">Apply for Funding</a></li>
+                    <li><a href="#">Farmer Stories</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 mb-4">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="pages/legal/terms.html">Terms</a></li>
+                    <li><a href="pages/legal/privacy.html">Privacy</a></li>
+                    <li><a href="#">Risk Disclosure</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2025 Bepari. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> in Bangladesh</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/cow-farming-platform/assets/js/listing.js"></script>
+    <script src="/cow-farming-platform/assets/js/animations.js"></script>
+</body>
+</html>

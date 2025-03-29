@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Dairy Expansion | Bepari</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Simple Professional CSS */
+        body {background-color: #ebe1c5 ;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .hero-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 2rem 0;
+        }
+        
+        .verification-badge {
+            background-color: #28a745;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .location-info {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .investor-avatars {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .investor-avatars img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-right: -10px;
+        }
+        
+        .metric-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: white;
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .progress-meter {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #28a745;
+            width: 82%;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .cow-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+        }
+        
+        .cow-photo {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-panel {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background-color: white;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid #dee2e6;
+            padding-left: 1.5rem;
+        }
+        
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #28a745;
+        }
+        
+        .risk-disclosure {
+            border: 1px solid #ffeeba;
+            background-color: #fff8e1;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-invest {
+            background-color: #28a745;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Identification Header -->
+    <section class="hero-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <span class="verification-badge">
+                        <i class="fas fa-check-circle"></i> Verified Farmer ★★★★★ (5.0)
+                    </span>
+                    <h1 class="project-title">Green Pastures Dairy Expansion <small class="text-muted">ID: #GP-228</small></h1>
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt text-danger"></i> Madison, WI
+                        <span class="text-muted">| 30 miles from USDA-certified processing plant</span>
+                    </div>
+                    <div class="social-proof">
+                        <p>127 investors already participating</p>
+                        <div class="investor-avatars">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="Investor 1">
+                            <img src="https://i.pravatar.cc/150?img=2" alt="Investor 2">
+                            <img src="https://i.pravatar.cc/150?img=3" alt="Investor 3">
+                            <img src="https://i.pravatar.cc/150?img=4" alt="Investor 4">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Investor 5">
+                            <span class="ms-2 align-self-center">+122 more</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Madison,WI&zoom=12&size=300x150&maptype=roadmap&key=YOUR_API_KEY" 
+                             alt="Location Map" class="img-fluid rounded border">
+                        <button class="btn btn-sm btn-link mt-2">View Full Map</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-4">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Investment Performance Dashboard -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <div class="metric-value">14.7%</div>
+                            <div class="metric-label">Annualized ROI</div>
+                            <small class="text-muted">Updated: Today</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <div class="metric-value">Medium</div>
+                            <div class="metric-label">Risk Level</div>
+                            <div class="progress-meter mt-3">
+                                <div class="progress-fill" style="width: 60%;"></div>
+                            </div>
+                            <small class="text-muted">Based on 5 risk factors</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <div class="metric-value">82%</div>
+                            <div class="metric-label">Funded</div>
+                            <div class="progress-meter mt-3">
+                                <div class="progress-fill" style="width: 82%;"></div>
+                            </div>
+                            <small class="text-muted">48h left to join</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Price Charts -->
+                <div class="metric-card mb-4">
+                    <h3>Share Price History</h3>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                    <div class="text-muted small">
+                        Key events: <span class="text-primary">Calf Born (+8% spike)</span>, 
+                        <span class="text-primary">Milk Contract Signed (+12%)</span>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="metric-card h-100">
+                            <h3>Comparative Yield</h3>
+                            <div class="chart-container">
+                                <canvas id="yieldChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="metric-card h-100">
+                            <h3>Milk Price Tracker</h3>
+                            <div class="chart-container">
+                                <canvas id="milkChart"></canvas>
+                            </div>
+                            <div class="text-muted small">
+                                This project's payout adjusts with global dairy prices
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cow Health Grid -->
+                <div class="metric-card mb-4">
+                    <h3>Herd Health & Transparency</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="cow-card">
+                                <img src="https://source.unsplash.com/random/300x200/?cow" alt="Daisy" class="cow-photo">
+                                <h5>Daisy #GP-228-4</h5>
+                                <p class="small">
+                                    <i class="fas fa-heartbeat text-danger"></i> Last vet: 3 days ago<br>
+                                    <i class="fas fa-wine-bottle text-primary"></i> Milk yield: 6.2L/day<br>
+                                    <i class="fas fa-baby text-success"></i> Pregnant (Due Sept 2024)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cow-card">
+                                <img src="https://source.unsplash.com/random/300x200/?cow" alt="Bessie" class="cow-photo">
+                                <h5>Bessie #GP-228-7</h5>
+                                <p class="small">
+                                    <i class="fas fa-heartbeat text-danger"></i> Last vet: 1 week ago<br>
+                                    <i class="fas fa-wine-bottle text-primary"></i> Milk yield: 5.8L/day<br>
+                                    <i class="fas fa-check text-success"></i> Healthy
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cow-card">
+                                <h5>Herd Summary</h5>
+                                <div class="mb-3">
+                                    <strong>23% herd expansion</strong> in 6 months
+                                    <div class="progress-meter mt-2">
+                                        <div class="progress-fill" style="width: 23%;"></div>
+                                    </div>
+                                </div>
+                                <div class="verification-badge d-inline-block">
+                                    <i class="fas fa-shield-alt"></i> Disease-free since 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestone Timeline -->
+                <div class="metric-card mb-4">
+                    <h3>Project Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h5>March 2024</h5>
+                            <p>First milk shipment ($12k profit distributed)</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h5>Present</h5>
+                            <p>Breeding 5 new calves (est. +$8k value)</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h5>October 2024</h5>
+                            <p>Organic certification expected → +15% premium</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Disclosure -->
+                <div class="risk-disclosure">
+                    <h4><i class="fas fa-exclamation-triangle text-warning"></i> Risk Disclosure</h4>
+                    <p>This project involves:</p>
+                    <ul>
+                        <li>Commodity price fluctuations</li>
+                        <li>Livestock mortality risk (insured up to 90%)</li>
+                        <li>Regulatory changes in dairy industry</li>
+                    </ul>
+                    <a href="#" class="btn btn-sm btn-outline-secondary">View full risk assessment report [PDF]</a>
+                </div>
+            </div>
+
+            <!-- Investment Action Panel -->
+            <div class="col-lg-4">
+                <div class="action-panel">
+                    <h4>Investment Details</h4>
+                    <div class="mb-3">
+                        <h5>Current Share Price</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="metric-value">$14.75</span>
+                            <span class="text-success"><i class="fas fa-arrow-up"></i> 2.1% this week</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <h5>Select Quantity</h5>
+                        <input type="range" class="form-range" min="1" max="100" value="10" id="shareSlider">
+                        <div class="d-flex justify-content-between">
+                            <span>1 share</span>
+                            <span id="shareValue">10 shares</span>
+                            <span>100 shares</span>
+                        </div>
+                        <small class="text-muted">10 shares = 0.8% ownership</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <h5>Projected Earnings</h5>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" placeholder="Investment amount" value="147.50">
+                        </div>
+                        <div class="card bg-light p-2">
+                            <div class="d-flex justify-content-between">
+                                <span>Est. annual return:</span>
+                                <strong>$21.68 (14.7%)</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-invest">
+                        <i class="fas fa-lock me-2"></i> Reserve Shares Now
+                    </button>
+                    
+                    <div class="mt-3 small text-center">
+                        <div class="mb-2">
+                            <i class="fas fa-shield-alt text-success me-2"></i> Escrow-protected payments
+                        </div>
+                        <div>
+                            <i class="fas fa-undo text-success me-2"></i> 7-day cooling-off period
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; padding-bottom: 20px;">
+        <a href="/cow-farming-platform/pages/index.html">
+            <button>Home</button>
+        </a>
+    </div>
+    
+    <script>
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Share slider
+            const shareSlider = document.getElementById('shareSlider');
+            const shareValue = document.getElementById('shareValue');
+            
+            shareSlider.addEventListener('input', function() {
+                shareValue.textContent = `${this.value} shares`;
+            });
+            
+            // Price History Chart
+            const priceCtx = document.getElementById('priceChart').getContext('2d');
+            new Chart(priceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Share Price ($)',
+                        data: [12.5, 13.2, 12.8, 14.3, 14.0, 14.75],
+                        borderColor: '#28a745',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Yield Comparison Chart
+            const yieldCtx = document.getElementById('yieldChart').getContext('2d');
+            new Chart(yieldCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['This Project', 'Industry Avg', 'Platform Avg'],
+                    datasets: [{
+                        label: 'ROI %',
+                        data: [14.7, 9.2, 11.5],
+                        backgroundColor: [
+                            '#28a745',
+                            '#6c757d',
+                            '#17a2b8'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Milk Price Chart
+            const milkCtx = document.getElementById('milkChart').getContext('2d');
+            new Chart(milkCtx, {
+                type: 'line',
+                data: {
+                    labels: ['6am', '9am', '12pm', '3pm', '6pm', '9pm'],
+                    datasets: [{
+                        label: 'Milk Price ($/gal)',
+                        data: [3.42, 3.45, 3.50, 3.48, 3.52, 3.55],
+                        borderColor: '#ffc107',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
