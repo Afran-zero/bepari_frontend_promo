@@ -52,58 +52,138 @@ function initFilterPanel() {
 function initComparisonTool() {
     const compareFab = document.querySelector('.comparison-fab');
     const compareModal = document.querySelector('.comparison-modal');
-    const compareBtns = document.querySelectorAll('.btn-action .fa-balance-scale');
-    const closeModal = compareModal.querySelector('.btn-close');
+    const compareCloseBtn = compareModal.querySelector('.btn-close');
+    const compareClearBtn = compareModal.querySelector('.btn-outline-secondary');
+    const compareContinueBtn = compareModal.querySelector('.btn-primary');
+    
     let comparedProjects = [];
-
-    // FAB click
-    compareFab.addEventListener('click', () => {
-        if (comparedProjects.length > 0) {
-            compareModal.classList.add('active');
-        } else {
-            // Show tooltip or message
-            alert('Select at least 1 project to compare');
-        }
-    });
-
-    // Close modal
-    closeModal.addEventListener('click', () => {
-        compareModal.classList.remove('active');
-    });
-
-    // Compare button clicks
-    compareBtns.forEach((btn, index) => {
-        btn.addEventListener('click', function() {
+    
+    // Initialize comparison buttons
+    document.querySelectorAll('.btn-action .fa-balance-scale').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
             const card = this.closest('.project-card');
-            const projectId = card.dataset.id || index;
+            const projectId = card.dataset.id || card.querySelector('h3').textContent;
             
-            if (comparedProjects.includes(projectId)) {
-                // Remove if already in comparison
-                comparedProjects = comparedProjects.filter(id => id !== projectId);
+            // Get project details
+            const projectDetails = {
+                id: projectId,
+                name: card.querySelector('h3').textContent,
+                roi: card.querySelector('.project-meta strong:nth-child(1)').textContent,
+                minInvest: card.querySelector('.project-meta strong:nth-child(2)').textContent,
+                duration: card.querySelector('.project-meta strong:nth-child(3)').textContent,
+                location: card.querySelector('.location').textContent,
+                progress: card.querySelector('.progress-value').textContent,
+                badges: Array.from(card.querySelectorAll('.card-badges .badge')).map(b => b.textContent.trim())
+            };
+            
+            // Toggle project in comparison
+            const index = comparedProjects.findIndex(p => p.id === projectId);
+            if (index >= 0) {
+                // Remove from comparison
+                comparedProjects.splice(index, 1);
                 this.classList.remove('active');
-            } else if (comparedProjects.length < 3) {
-                // Add to comparison
-                comparedProjects.push(projectId);
-                this.classList.add('active');
             } else {
-                alert('Maximum 3 projects can be compared');
+                // Add to comparison (max 3)
+                if (comparedProjects.length < 3) {
+                    comparedProjects.push(projectDetails);
+                    this.classList.add('active');
+                } else {
+                    alert('You can compare a maximum of 3 projects');
+                    return;
+                }
             }
             
-            // Update FAB counter
-            updateCompareCounter();
+            updateCompareUI();
         });
     });
-
-    function updateCompareCounter() {
-        const counter = compareFab.querySelector('.badge');
-        counter.textContent = `${comparedProjects.length}/3`;
-        
-        // Disable FAB if empty
-        if (comparedProjects.length === 0) {
-            compareFab.classList.add('disabled');
-        } else {
-            compareFab.classList.remove('disabled');
+    
+    // Open comparison modal
+    compareFab.addEventListener('click', function() {
+        if (comparedProjects.length > 0) {
+            updateComparisonTable();
+            compareModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+    });
+    
+    // Close modal
+    compareCloseBtn.addEventListener('click', closeCompareModal);
+    compareModal.addEventListener('click', function(e) {
+        if (e.target === this) closeCompareModal();
+    });
+    
+    // Clear comparison
+    compareClearBtn.addEventListener('click', function() {
+        comparedProjects = [];
+        document.querySelectorAll('.btn-action .fa-balance-scale').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        updateCompareUI();
+        closeCompareModal();
+    });
+    
+    // Continue button
+    compareContinueBtn.addEventListener('click', function() {
+        // Add your "continue to invest" logic here
+        alert('Redirecting to investment page...');
+        closeCompareModal();
+    });
+    
+    function updateCompareUI() {
+        const compareBadge = compareFab.querySelector('.badge');
+        compareBadge.textContent = `${comparedProjects.length}/3`;
+        
+        // Show/hide FAB based on items
+        if (comparedProjects.length > 0) {
+            compareFab.style.display = 'block';
+        } else {
+            compareFab.style.display = 'none';
+        }
+    }
+    
+    function updateComparisonTable() {
+        const tableBody = compareModal.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        // Add comparison rows
+        addComparisonRow('Project', comparedProjects.map(p => p.name));
+        addComparisonRow('ROI', comparedProjects.map(p => p.roi));
+        addComparisonRow('Min. Investment', comparedProjects.map(p => p.minInvest));
+        addComparisonRow('Duration', comparedProjects.map(p => p.duration));
+        addComparisonRow('Location', comparedProjects.map(p => p.location));
+        addComparisonRow('Funding Progress', comparedProjects.map(p => p.progress));
+        addComparisonRow('Tags', comparedProjects.map(p => p.badges.join(', ')));
+        
+        // Update counter in modal title
+        compareModal.querySelector('.compare-count').textContent = comparedProjects.length;
+    }
+    
+    function addComparisonRow(metric, values) {
+        const row = document.createElement('tr');
+        const metricCell = document.createElement('td');
+        metricCell.textContent = metric;
+        row.appendChild(metricCell);
+        
+        values.forEach(value => {
+            const valueCell = document.createElement('td');
+            valueCell.textContent = value || '-';
+            row.appendChild(valueCell);
+        });
+        
+        // Fill empty cells if less than 3 projects
+        for (let i = values.length; i < 3; i++) {
+            const emptyCell = document.createElement('td');
+            emptyCell.innerHTML = '<span class="text-muted">-</span>';
+            row.appendChild(emptyCell);
+        }
+        
+        compareModal.querySelector('tbody').appendChild(row);
+    }
+    
+    function closeCompareModal() {
+        compareModal.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 

@@ -1490,4 +1490,88 @@ p {
     0% { opacity: 0.5; }
     50% { opacity: 1; }
     100% { opacity: 0.5; }
+}/* Comparison FAB */
+.comparison-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: none;
+}
+
+.comparison-fab .badge {
+    font-size: 0.8em;
+}
+
+/* Comparison Modal */
+.comparison-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.comparison-modal .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 900px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Active compare button */
+.btn-action.active {
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.1);
+}/* Comparison button active state */
+.btn-action .fa-balance-scale.active {
+    color: var(--bs-primary);
+}
+
+/* Comparison modal styles */
+.comparison-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1050;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-modal.active {
+    display: flex;
+}
+
+.comparison-modal .modal-content {
+    background: white;
+    border-radius: 0.5rem;
+    max-width: 900px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* FAB styles */
+.comparison-fab {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1040;
+}
+
+.comparison-fab .badge {
+    font-size: 0.75em;
 }

@@ -14,40 +14,8 @@
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body >
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="assets/images/logos/logo-white.png" alt="Bepari" height="40">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link " href="/index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/pages/projects/listing.html">Invest</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pages/farmer/request.html">For Farmers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pages/legal/terms.html">Legal</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                            About
-                        </a>
-                        <ul class="dropdown-menu">
-                         
-                         <li><a class="dropdown-item" href="pages/legal/privacy.html">Privacy</a></li>
-                            <li><a class="dropdown-item" href="/pages/legal/Team.html">Team</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item ms-lg-3">
-                        <a class="btn btn-primary btn-glow" href="/pages/legal/Team.html">Login / Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
+        <!-- Include Navbar -->
+     <div id="navbar-container"></div>
 
     <!-- Hero Filter Bar -->
     <section class="sticky-filter-bar">
@@ -161,7 +129,7 @@
             
             <!-- Repeat project cards (2 more examples in this snippet) -->
             <div class="col-md-4 mb-4">
-                <div class="project-card">
+                <div class="project-card" data-id="project1">
                     <div class="card-badges">
                         <span class="badge ending-badge">Ending Soon <i class="fas fa-clock"></i></span>
                     </div>
@@ -376,7 +344,7 @@
     <div class="comparison-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h5>Compare Projects (2/3)</h5>
+                <h5>Compare Projects (<span class="compare-count">0</span>/3)</h5>
                 <button class="btn-close"></button>
             </div>
             <div class="modal-body">
@@ -385,40 +353,35 @@
                         <thead>
                             <tr>
                                 <th>Metric</th>
-                                <th>Organic Dairy</th>
-                                <th>Goat Farm</th>
-                                <th>Add Project</th>
+                                <th>Project 1</th>
+                                <th>Project 2</th>
+                                <th>Project 3</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Rows will be added dynamically -->
                             <tr>
                                 <td>ROI %</td>
-                                <td>22%</td>
-                                <td>25%</td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Risk Level</td>
-                                <td>Medium</td>
-                                <td>High</td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Yield Potential</td>
-                                <td>High</td>
-                                <td>Medium</td>
+                                <td>Duration</td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Farmer Score</td>
-                                <td>4.8 ★</td>
-                                <td>4.5 ★</td>
+                                <td>Min. Investment</td>
                                 <td></td>
-                            </tr>
-                            <tr>
-                                <td>Eco Impact</td>
-                                <td><i class="fas fa-leaf text-success"></i> 85%</td>
-                                <td><i class="fas fa-leaf text-success"></i> 92%</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -493,10 +456,153 @@
         </div>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/listing.js"></script>
-    <script src="/assets/js/animations.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/listing.js"></script>
+  <script src="/assets/js/animations.js"></script>
+
+  <!-- Add this new script -->
+  <script>
+  // Enhanced component loader with better error handling
+  async function loadComponent(componentName, containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) {
+          console.error(`Container ${containerId} not found`);
+          return;
+      }
+
+      // Try multiple possible paths
+      const pathsToTry = [
+          'components/navbar.html',    // Relative path
+          './components/navbar.html',  // Same folder level
+          '/components/navbar.html'    // Root path
+      ];
+
+      let loadedSuccessfully = false;
+
+      for (const path of pathsToTry) {
+          try {
+              const response = await fetch(path);
+              if (!response.ok) continue;
+              
+              const html = await response.text();
+              container.innerHTML = html;
+              loadedSuccessfully = true;
+              
+              // Highlight active nav item
+              if (componentName === 'navbar') {
+                  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                  document.querySelectorAll('.nav-link').forEach(link => {
+                      const linkPage = link.getAttribute('href').split('/').pop();
+                      if (currentPage === linkPage || 
+                          (currentPage === 'index.html' && linkPage === '') ||
+                          (currentPage === '' && linkPage === 'index.html')) {
+                          link.classList.add('active');
+                      }
+                  });
+              }
+              break;
+          } catch (error) {
+              console.log(`Failed to load from ${path}`, error);
+          }
+      }
+
+      if (!loadedSuccessfully) {
+          container.innerHTML = `
+              <div class="alert alert-danger">
+                  Error loading navigation. 
+                  <a href="index.html">Refresh page</a> or 
+                  <a href="mailto:support@bepari.com">contact support</a>.
+              </div>
+          `;
+          console.error(`All paths failed for ${componentName}`);
+      }
+  }
+
+  // Load components when page is ready
+  document.addEventListener('DOMContentLoaded', function() {
+      loadComponent('navbar', 'navbar-container');
+  });
+// Comparison functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize comparison array
+    let comparisonItems = [];
+    const compareFab = document.querySelector('.comparison-fab');
+    const compareBadge = compareFab.querySelector('.badge');
+    const compareModal = document.querySelector('.comparison-modal');
+    
+    // Add to comparison
+    document.querySelectorAll('.btn-action').forEach(btn => {
+        if (btn.querySelector('.fa-balance-scale')) {
+            btn.addEventListener('click', function() {
+                const projectCard = this.closest('.project-card');
+                const projectName = projectCard.querySelector('h3').textContent;
+                
+                if (!comparisonItems.includes(projectName)) {
+                    if (comparisonItems.length < 3) {
+                        comparisonItems.push(projectName);
+                        updateCompareUI();
+                    } else {
+                        alert('Maximum 3 projects can be compared');
+                    }
+                } else {
+                    comparisonItems = comparisonItems.filter(item => item !== projectName);
+                    updateCompareUI();
+                }
+                
+                // Toggle active state
+                this.classList.toggle('active');
+            });
+        }
+    });
+    
+    // Open compare modal
+    compareFab.addEventListener('click', function() {
+        if (comparisonItems.length > 0) {
+            compareModal.style.display = 'block';
+            updateCompareTable();
+        }
+    });
+    
+    // Close compare modal
+    compareModal.querySelector('.btn-close').addEventListener('click', function() {
+        compareModal.style.display = 'none';
+    });
+    
+    // Clear comparison
+    compareModal.querySelector('.btn-outline-secondary').addEventListener('click', function() {
+        comparisonItems = [];
+        updateCompareUI();
+        compareModal.style.display = 'none';
+        document.querySelectorAll('.btn-action').forEach(btn => {
+            btn.classList.remove('active');
+        });
+    });
+    
+    function updateCompareUI() {
+        compareBadge.textContent = `${comparisonItems.length}/3`;
+        compareFab.style.display = comparisonItems.length > 0 ? 'block' : 'none';
+    }
+    
+    function updateCompareTable() {
+        const table = compareModal.querySelector('table tbody');
+        // Clear existing rows except header
+        table.innerHTML = '';
+        
+        // Add your comparison logic here
+        // This is a simplified version - you'll need to expand it
+        comparisonItems.forEach(project => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${project}</td>
+                <td>Sample Data</td>
+                <td>Sample Data</td>
+            `;
+            table.appendChild(row);
+        });
+    }
+});
+
+  </script>
 </body>
 </html>
